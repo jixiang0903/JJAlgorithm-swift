@@ -47,12 +47,33 @@ class ViewController: UIViewController {
             return[]
         }
         print(sumTwo([2, 7, 11, 15], 9))
+        /**
+         2.给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
+         示例 1:
+         输入: 123
+         输出: 321
+         注意:
+         假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231,  231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。
+         */
         
+        func reverse(_ x :Int) -> Int{
+            var rev = 0
+            var temp = x
+            while temp != 0 {
+                let pop = temp % 10
+                temp = temp / 10
+                rev = rev * 10 + pop
+                if rev > Int32.max || (rev == (Int32.max / 10) && pop > 7){
+                    return 0;
+                }
+                if rev < Int32.min || (rev == (Int32.min / 10) && pop < -8){
+                    return 0;
+                }
+            }
+            return rev
+        }
         
-        
-        
-        
-        
+        print(reverse(3045))
     }
 }
 
